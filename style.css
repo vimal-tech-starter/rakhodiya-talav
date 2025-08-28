@@ -19,7 +19,7 @@
 
 /* Light mode (default) */
 :root {
-    /* --bg-color: #f0f2f5; */
+    --bg-color: #f0f2f5;
     --text-color: #333;
     --card-bg: #fff;
     /* --header-bg: #1877f2; */
@@ -36,7 +36,7 @@ body.dark-mode {
     --text-color: #e4e6eb;
     --card-bg: #242526;
     --header-bg: #242526;
-    --header-text: #e4e6eb;
+    --header-text: #0800f7;
     --button-color: #b0b3b8;
     --button-hover: #2d88ff;
 }
@@ -55,6 +55,7 @@ header {
     color: var(--header-text);
     padding: 1rem;
     text-align: center;
+    
 }
 
 #feed {
