@@ -6,8 +6,17 @@ async function loadFeed() {
   items.forEach(item => {
     const card = document.createElement("div");
     card.className = "card";
+
+    // Build image gallery
+    let imagesHTML = "";
+    if (item.images && item.images.length > 0) {
+      imagesHTML = `<div class="gallery">` +
+        item.images.map(img => `<img src="${img}" alt="Album image" onclick="openLightbox('${img}')">`).join("") +
+        `</div>`;
+    }
+    
     card.innerHTML = `
-      <img src="${item.image}" alt="Post image">
+      ${imagesHTML}
       <div class="content">
         <h2>${item.title}</h2>
         <p>${item.description}</p>
@@ -26,6 +35,24 @@ function likePost(button) {
   button.innerText = "❤️ Liked";
   button.style.color = "red";
 }
+
+// Lightbox functions
+function openLightbox(src) {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  lightboxImg.src = src;
+  lightbox.style.display = "flex";
+}
+
+document.getElementById("closeLightbox").addEventListener("click", () => {
+  document.getElementById("lightbox").style.display = "none";
+});
+
+document.getElementById("lightbox").addEventListener("click", (e) => {
+  if (e.target.id === "lightbox") {
+    document.getElementById("lightbox").style.display = "none";
+  }
+});
 
 // Dark mode toggle
 document.getElementById("darkModeToggle").addEventListener("click", () => {

@@ -1,12 +1,23 @@
 [
   {
-    "title": "Day 0",
-    "description": "Ganesha Arrival",
-    "image": "images/0-Rakhoidiya-Talav_0.jpg"
+    "title": "Rakhoidiya-Talav",
+    "description": "Ganesha Festival",
+    "images": [
+      "images/Rakhoidiya-Talav (1).jpg",
+      "images/Rakhoidiya-Talav (2).jpg",
+      "images/Rakhoidiya-Talav (3).jpg",
+      "images/Rakhoidiya-Talav (4).jpg",
+      "images/Rakhoidiya-Talav (5).jpg"
+    ]
   },
   {
-    "title": "Day 1",
+    "title": "Rakhoidiya-Talav",
     "description": "Ganesha Festival",
-    "image": "images/1-Rakhoidiya-Talav_1.jpg"
+    "images": [
+      "images/Rakhoidiya-Talav (6).jpg",
+      "images/Rakhoidiya-Talav (7).jpg",
+      "images/Rakhoidiya-Talav (8).jpg",
+      "images/Rakhoidiya-Talav (9).jpg"    
+    ]
   }
 ]
