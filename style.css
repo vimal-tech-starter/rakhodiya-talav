@@ -23,8 +23,8 @@
     --text-color: #333;
     --card-bg: #fff;
     /* --header-bg: #1877f2; */
-    --background-image: linear-gradient(to bottom, #1877f2 0%, #1877f2 50%, #1877f2 50%, #ffffff 100%);
-    --header-text: #000000;
+    --header-bg: linear-gradient(to bottom, #1877f2 0%, #1877f2 50%, #1877f2 50%, #ffffff 100%);
+    --header-text: #090083;
     --button-color: #555;
     --button-hover: #1877f2;
     --min-height: 100px;
@@ -36,7 +36,7 @@ body.dark-mode {
     --text-color: #e4e6eb;
     --card-bg: #242526;
     --header-bg: #242526;
-    --header-text: #555;
+    --header-text: #d3d3d3;
     --button-color: #b0b3b8;
     --button-hover: #2d88ff;
 }
@@ -49,8 +49,8 @@ body {
 }
 
 header {
+    /* background: var(--header-bg); */
     background: var(--header-bg);
-    background-image: var(--background-image);
     min-height: var(--min-height);
     color: var(--header-text);
     padding: 1rem;
