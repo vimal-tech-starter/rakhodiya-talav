@@ -1,29 +1,9 @@
-/* style.css */
-
-/* body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f0f2f5;
-} */
-
-/* header {
-    background: #1877f2;
-    background-image: linear-gradient(to bottom, #1877f2 0%, #1877f2 50%,
-    #1877f2 50%, #ffffff 100%);
-    min-height: 100px;
-    color: rgb(0, 0, 0);
-    padding: 1rem;
-    text-align: center;
-} */
-
-
 /* Light mode (default) */
 :root {
     --bg-color: #f0f2f5;
     --text-color: #333;
     --card-bg: #fff;
-    /* --header-bg: #1877f2; */
-    --header-bg: linear-gradient(to bottom, #1877f2 0%, #1877f2 50%, #1877f2 50%, #ffffff 100%);
+    --header-bg: linear-gradient(to bottom, #fcd136 0%, #e84716 50%, #ee5429 50%, #ffffff 100%);
     --header-text: #090083;
     --button-color: #555;
     --button-hover: #1877f2;
@@ -36,7 +16,7 @@ body.dark-mode {
     --text-color: #e4e6eb;
     --card-bg: #242526;
     --header-bg: #242526;
-    --header-text: #d3d3d3;
+    --header-text: #db0000;
     --button-color: #b0b3b8;
     --button-hover: #2d88ff;
 }
@@ -49,7 +29,6 @@ body {
 }
 
 header {
-    /* background: var(--header-bg); */
     background: var(--header-bg);
     min-height: var(--min-height);
     color: var(--header-text);

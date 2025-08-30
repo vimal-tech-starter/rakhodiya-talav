@@ -14,7 +14,7 @@ async function loadFeed() {
         item.images.map(img => `<img src="${img}" alt="Album image" onclick="openLightbox('${img}')">`).join("") +
         `</div>`;
     }
-    
+
     card.innerHTML = `
       ${imagesHTML}
       <div class="content">
