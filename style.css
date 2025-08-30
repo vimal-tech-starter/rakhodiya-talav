@@ -162,42 +162,23 @@ footer {
 }
 
 /* Image gallery styles */
-/* Make multiple images in a nice responsive grid. */
-/* after comment tried Responsive Gallery Grid */
+/*Make multiple images in a nice responsive grid.*/
 .gallery {
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  /* gap: 5px; */
-  gap: 10px;
-  padding: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 5px;
 }
 
 .gallery img {
   width: 100%;
-  height: auto;
-  display: block;
   border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s;
   object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* add media queries to make the gallery more controlled */
-@media (max-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
+  transform: scale(1.03);
 }
 
 /* Lightbox popup */
@@ -207,7 +188,7 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   display: none;
   justify-content: center;
   align-items: center;
@@ -218,7 +199,7 @@ footer {
   max-width: 90%;
   max-height: 80%;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 #closeLightbox {
