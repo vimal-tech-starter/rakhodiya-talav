@@ -1,6 +1,6 @@
 /* Light mode (default) */
 :root {
-  --bg-color: #f0f2f5;
+  --bg-color: #ffa17e;
   --text-color: #333;
   --card-bg: #ffffff0f;
   --header-bg: linear-gradient(to bottom, #fcd136 0%, #e84716 50%, #ee5429 50%, #ffffff 100%);
