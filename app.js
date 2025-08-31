@@ -81,4 +81,14 @@ scrollBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// Pause other videos when one starts playing
+const videos = document.querySelectorAll("video");
+videos.forEach(video => {
+  video.addEventListener("play", () => {
+    videos.forEach(v => {
+      if (v !== video) v.pause();
+    });
+  });
+});
+
 loadFeed();

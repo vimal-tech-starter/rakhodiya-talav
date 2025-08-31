@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>
+            🎬 Videos Grid Gallery<br>
+            <a href="index.html">
+                <span style='font-size:50px;'>&#8592;</span>
+                Back to Home Page</a>
+        </h1>
+    </header>
+
+    <!-- Local video example -->
+    <main class="gallery">
+        <video controls>
+            <source src="videos/ganesha-arrival/Rakhodiya-Talav (1).mp4" type="video/mp4">
+        </video>
+
+        <video controls>
+            <source src="videos/ganesha-arrival/Rakhodiya-Talav (2).mp4" type="video/mp4">
+        </video>
+    </main>
+
+    <!-- Lightbox (popup for clicked image) -->
+    <div id="lightbox">
+        <span id="closeLightbox">✖</span>
+        <img id="lightboxImg" src="" alt="Preview">
+    </div>
+
+    <footer>
+        <h4>
+            ઐતિહાસિક પુનરુત્થાન: ૧૮૯૩માં લોકમાન્ય તિલક દ્વારા એકતા માટે<br>
+            જાહેર ક્ષેત્રમાં લોકપ્રિય બનેલ, ૧૦ દિવસીય ઉજવણીના ઊંડા સાંસ્કૃતિક<br>
+            મૂળ વૈદિક પરંપરાઓ અને ભક્તિ વિધિઓ સાથે જોડાયેલા છે.
+        </h4><hr>
+        <h3>
+            ગાયત્રી મંદિરની બાજુમાં, વલસાડ-396001, ગુજરાત-ભારત.
+        </h3>
+        <p>&copy; 2025 Vimal Patel | Java Developer</p>
+    </footer>
+
+    <!-- Floating dark mode button -->
+    <button id="darkModeToggle">🌙</button>
+
+    <!-- Floating scroll-to-top button -->
+    <button id="scrollTopBtn">⬆️</button>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

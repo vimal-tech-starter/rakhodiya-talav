@@ -166,7 +166,8 @@ footer {
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 5px;
+  gap: 15px;
+  padding: 15px;
 }
 
 .gallery img {
@@ -174,7 +175,10 @@ footer {
   border-radius: 8px;
   object-fit: cover;
   cursor: pointer;
-  transition: transform 0.2s;
+  /* transition: transform 0.2s; */
+  height: auto;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .gallery img:hover {
@@ -224,4 +228,12 @@ footer {
 
 #viewAll:hover {
   opacity: 0.85;
+}
+
+/* gallery-video grid */
+.gallery video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
