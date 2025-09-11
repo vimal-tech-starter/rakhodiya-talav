@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Gallery</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/button.css">
 </head>
 
 <body>
@@ -18,12 +21,15 @@
         </h1>
     </header>
 
-    <main id="feed" class="feed" aria-live="polite"></main>
+    <h2 style="text-align:center">Image Gallery Grid - 1</h2>
+    <div class="gallery" id="gallery"></div>
 
-    <!-- Lightbox (popup for clicked image) -->
-    <div id="lightbox">
-        <span id="closeLightbox">✖</span>
-        <img id="lightboxImg" src="" alt="Preview">
+    <!-- 🔹 Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+        <img id="lightbox-img">
+        <span class="next" onclick="changeSlide(1)">&#10095;</span>
     </div>
 
     <footer>
@@ -31,7 +37,8 @@
             ઐતિહાસિક પુનરુત્થાન: ૧૮૯૩માં લોકમાન્ય તિલક દ્વારા એકતા માટે<br>
             જાહેર ક્ષેત્રમાં લોકપ્રિય બનેલ, ૧૦ દિવસીય ઉજવણીના ઊંડા સાંસ્કૃતિક<br>
             મૂળ વૈદિક પરંપરાઓ અને ભક્તિ વિધિઓ સાથે જોડાયેલા છે.
-        </h4><hr>
+        </h4>
+        <hr>
         <h3>
             ગાયત્રી મંદિરની બાજુમાં, વલસાડ-396001, ગુજરાત-ભારત.
         </h3>
@@ -44,7 +51,7 @@
     <!-- Floating scroll-to-top button -->
     <button id="scrollTopBtn">⬆️</button>
 
-    <script src="app.js"></script>
+    <script src="js/app-gallery-image.js"></script>
 
 </body>
 
