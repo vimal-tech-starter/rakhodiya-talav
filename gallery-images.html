@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Rakhodiya Talav</title>
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/lightbox.css">
-    <link rel="stylesheet" href="css/button.css">
 </head>
 
 <body>
@@ -21,15 +20,15 @@
         </h1>
     </header>
 
-    <h2 style="text-align:center">Image Gallery Grid - 1</h2>
-    <div class="gallery" id="gallery"></div>
+    <h2>Recursive Image Gallery</h2>
+    <div id="gallery"></div>
 
-    <!-- 🔹 Lightbox -->
+    <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
         <img id="lightbox-img">
-        <span class="next" onclick="changeSlide(1)">&#10095;</span>
+        <button class="control-btn close-btn">✖</button>
+        <button class="control-btn prev-btn">⟨</button>
+        <button class="control-btn next-btn">⟩</button>
     </div>
 
     <footer>
@@ -51,7 +50,11 @@
     <!-- Floating scroll-to-top button -->
     <button id="scrollTopBtn">⬆️</button>
 
-    <script src="js/app-gallery-image.js"></script>
+    <!-- JS -->
+    <script src="js/api.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/lightbox.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 
