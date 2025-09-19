@@ -10,32 +10,24 @@
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/lightbox.css">
     <link rel="stylesheet" href="css/scrollup.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Video Gallery CSS -->
+    <link rel="stylesheet" href="css/video/base.css">
 </head>
 
-<body>
+<body class="p-4">
     <header>
         <h2>
-            📸 Images Grid Gallery<br>
+            🎬 Videos Grid Gallery<br>
             <a href="index.html">
                 <span style='font-size:50px;'>&#8592;</span>
                 Back to Home Page</a>
         </h2>
     </header>
 
-    <div class="controls">
-        <button id="toggle-all">Collapse All</button>
-    </div>
-
-    <h2>Recursive Image Gallery</h2>
-    <div id="gallery"></div>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <img id="lightbox-img">
-        <button class="control-btn close-btn">✖</button>
-        <button class="control-btn prev-btn">⟨</button>
-        <button class="control-btn next-btn">⟩</button>
-    </div>
+    <h2 class="mb-4">Dynamic Vimeo Gallery</h2>
+    <div id="video-gallery" class="row g-4"></div>
 
     <footer>
         <h4>
@@ -66,6 +58,10 @@
     <script src="js/lightbox.js"></script>
     <script src="js/main.js"></script>
     <script src="js/scrollup.js"></script>
+    <!-- Bootstrap JS (optional, for other features) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Video Gallery JS -->
+    <script src="js/video/video.js"></script>
 </body>
 
 </html>

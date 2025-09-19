@@ -33,14 +33,14 @@
 }
 
 /* ===== Dark Mode Styles ===== */
-body.dark {
+/* body.dark {
   background: #181818;
   color: #e0e0e0;
 }
 
 body.dark footer {
   background: #111;
-}
+} */
 
 /* Floating dark mode toggle */
 #darkModeToggle {
