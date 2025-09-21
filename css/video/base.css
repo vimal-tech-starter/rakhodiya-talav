@@ -1,24 +1,102 @@
-/* Custom styling for Vimeo gallery */
-body {
-    background-color: #502f2f;
+/* General page styling */
+body { 
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffa17e; /* page background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
-h1 {
-    color: #333;
+/* Phone container (bezel) */
+.phone-frame {
+  position: relative;
+  width: 430px;                 
+  height: 95vh;                 
+  background: #000;
+  border-radius: 40px;          
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;                
 }
 
-.card {
-    border-radius: 100px;
-    overflow: hidden;
-    background: var(--card-bg);
-    border: 4px solid var(--card-border);
+/* Fake notch */
+.phone-frame::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 25px;
+  background: #111;
+  border-radius: 12px;
 }
 
-.card img {
-    width: 50%;
-    height: auto;
-    display: block;
+/* TikTok-style video feed */
+#video-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  border-radius: 28px;
+  scrollbar-width: none;
+  padding-bottom: 60px; /* space for bottom nav */
 }
-.card:hover {
-    box-shadow: 0 4px 15px rgba(65, 59, 59, 0.2);
+#video-gallery::-webkit-scrollbar {
+  display: none;
 }
+
+/* Each reel */
+#video-gallery .ratio {
+  width: 100%;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Video iframe */
+#video-gallery iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+/* Bottom navigation bar */
+.bottom-nav {
+  position: absolute;
+  bottom: 14px; /* inside bezel */
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+}
+
+/* Nav icons */
+.bottom-nav i {
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.bottom-nav i:hover {
+  transform: scale(1.2);
+}
+
