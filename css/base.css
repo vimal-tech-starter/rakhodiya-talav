@@ -2,23 +2,31 @@
 :root {
   --bg-color: #ffa17e;
   --text-color: #333;
-
+  --card-bg: #ffffff1c;
+  --card-border: #dddddd33;
   --header-bg: linear-gradient(to bottom, #fcd136 0%, #e84716 50%, #ee5429 50%, #ffffff 100%);
   --header-text: #090083;
   --button-color: #555;
   --button-hover: #1877f2;
   --min-height: 100px;
+  --toggle-bg: #007bff;
+  --toggle-bg-hover: #0056b3;
+  --overlay-bg: rgba(0, 0, 0, 0.85);
 }
 
 /* Dark mode overrides */
 body.dark-mode {
   --bg-color: #18191a;
   --text-color: #e4e6eb;
-  --card-bg: #242526;
+  --card-bg: #1e1e1e;
+  --card-border: #333;
   --header-bg: #242526;
   --header-text: #db0000;
   --button-color: #b0b3b8;
   --button-hover: #2d88ff;
+  --toggle-bg: #444;
+  --toggle-bg-hover: #666;
+  --overlay-bg: rgba(0, 0, 0, 0.9);
 }
 
 body {
@@ -27,6 +35,7 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
   padding: 20px;
+  transition: background 0.3s, color 0.3s;
 }
 
 h2 {
@@ -42,7 +51,6 @@ header {
   text-align: center;
 
 }
-
 
 .card img {
   width: 100%;
@@ -61,89 +69,6 @@ header {
 .card p {
   margin: 0 0 1rem;
   color: var(--text-color);
-}
-
-
-/* 
-.actions {
-  display: flex;
-  justify-content: space-around;
-  padding: 0.5rem 0;
-  border-top: 1px solid #eee;
-}
-
-.actions button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  color: var(--button-color);
-}
-
-.actions button:hover {
-  color: var(--button-hover);
-} 
-*/
-
-/* Floating dark mode toggle */
-#darkModeToggle {
-  position: fixed;
-  bottom: 5px;
-  right: 5px;
-  background: var(--card-bg);
-  border: 2px solid var(--button-color);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--button-color);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#darkModeToggle:hover {
-  color: var(--button-hover);
-  border-color: var(--button-hover);
-  transform: scale(1.1);
-}
-
-/* Scroll to top button */
-#scrollTopBtn {
-  position: fixed;
-  bottom: 5px;
-  /* above dark mode toggle */
-  left: 5px;
-  background: var(--card-bg);
-  border: 2px solid var(--button-color);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--button-color);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  /* hidden by default */
-  pointer-events: none;
-}
-
-#scrollTopBtn.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#scrollTopBtn:hover {
-  color: var(--button-hover);
-  border-color: var(--button-hover);
-  transform: scale(1.1);
 }
 
 footer {
@@ -177,4 +102,41 @@ footer {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 5px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Extra contrast in dark mode */
+body.dark-mode .gallery img {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
