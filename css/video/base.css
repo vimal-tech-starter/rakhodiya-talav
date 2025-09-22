@@ -44,10 +44,10 @@ h1 {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  transition: transform 0.3s, filter 0.3s;
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
-  /* hidden until fade-in */
+  /* for fade-in animation */
 }
 
 /* Dark overlay */
@@ -68,11 +68,29 @@ h1 {
   z-index: 1;
 }
 
-/* Hover effects */
+/* ✅ Hover effect: slight zoom + vibrate + brightness bump */
+/* .video-thumb:hover {
+  animation: vibrate 0.3s linear;
+  filter: brightness(1.2);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.7);
+  z-index: 2;
+} */
+
+/* Hover effects: scale + shadow + glow */
+/* ✅ Hover effect: zoom + glow + continuous vibration */
 .video-thumb:hover {
   transform: scale(1.05);
-  filter: brightness(1.05);
-  animation: glowPulse 1.5s infinite alternate;
+  /* base zoom */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(26, 183, 234, 0.6);
+  /* subtle blue glow */
+  filter: brightness(1.2);
+
+  animation: vibrate 0.3s linear infinite;
+  /* keeps looping */
+  /* runs once per hover */
+  z-index: 2;
+  /* box-shadow: 0 0 15px rgba(0, 200, 255, 0.7); */
 }
 
 /* Play icon */
@@ -130,5 +148,32 @@ h1 {
 
   100% {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(26, 183, 234, 0.4);
+  }
+}
+
+/* Vibrate animation */
+@keyframes vibrate {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-2px);
+  }
+
+  40% {
+    transform: translateX(2px);
+  }
+
+  60% {
+    transform: translateX(-2px);
+  }
+
+  80% {
+    transform: translateX(2px);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
