@@ -1,106 +1,136 @@
-const accessToken = "fc4fd88fc9eaf8fcd1887b9be59ddf49"; // 🔑 Your Vimeo access token
-const userId = "user247310431";                          // Your Vimeo user ID
-const container = document.getElementById("video-gallery");
+const accessTikon = 'fc4fd88fc9eaf8fcd1887b9be59ddf49'; // Replace with your Vimeo Access Token
+const userId = 'user247310431'; // Replace with your Vimeo User ID
+const gallery = document.getElementById('video-gallery');
 
-let currentPage = 1;
-const perPage = 10;
-let totalPages = Infinity;
-let isLoading = false;
-let observer = null;
+let activeIframe = null; // track current player
 
-async function loadVideos(page = 1) {
-  if (isLoading) return;
-  isLoading = true;
-  console.log(`Loading page ${page}...`);
+// Smoothly remove a thumbnail (non-blocking)
+function removeThumbnail(thumb, delay = 0) {
+  setTimeout(() => {
+    thumb.classList.add('fade-out');
+    thumb.addEventListener('animationend', () => thumb.remove());
+  }, delay);
+}
 
+// Clear gallery but let old thumbs fade out while new ones fade in
+function fadeOutExistingThumbs() {
+  const thumbs = document.querySelectorAll('.video-thumb');
+  thumbs.forEach((thumb, index) => {
+    removeThumbnail(thumb, index * 100);
+  });
+}
+
+// Open Vimeo video directly in fullscreen
+function openFullscreenVimeo(videoId) {
+  if (activeIframe) activeIframe.remove(); // safety
+
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
+  iframe.allow = "autoplay; fullscreen";
+  iframe.style.position = "fixed";
+  iframe.style.top = "0";
+  iframe.style.left = "0";
+  iframe.style.width = "100%";
+  iframe.style.height = "100%";
+  iframe.style.border = "none";
+  iframe.style.zIndex = "1000";
+
+  document.body.appendChild(iframe);
+  activeIframe = iframe;
+
+  // Add a floating close button ❌
+  closeButton = document.createElement("button");
+  closeButton.innerHTML = "✖";
+  closeButton.style.position = "fixed";
+  closeButton.style.top = "15px";
+  closeButton.style.right = "20px";
+  closeButton.style.zIndex = "1100";
+  closeButton.style.fontSize = "28px";
+  closeButton.style.background = "rgba(0,0,0,0.6)";
+  closeButton.style.color = "#fff";
+  closeButton.style.border = "none";
+  closeButton.style.borderRadius = "50%";
+  closeButton.style.width = "45px";
+  closeButton.style.height = "45px";
+  closeButton.style.cursor = "pointer";
+  closeButton.style.display = "flex";
+  closeButton.style.alignItems = "center";
+  closeButton.style.justifyContent = "center";
+  closeButton.style.transition = "background 0.3s";
+  closeButton.onmouseover = () => closeButton.style.background = "rgba(255,0,0,0.8)";
+  closeButton.onmouseout = () => closeButton.style.background = "rgba(0,0,0,0.6)";
+  closeButton.onclick = () => closeVimeoPlayer();
+
+  document.body.appendChild(closeButton);
+
+  // Request fullscreen if supported
+  if (iframe.requestFullscreen) iframe.requestFullscreen();
+
+  // Remove iframe if ESC is pressed
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeVimeoPlayer();
+  });
+
+  // Remove iframe when fullscreen exits
+  ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "MSFullscreenChange"]
+    .forEach(eventType => {
+      document.addEventListener(eventType, () => {
+        if (!document.fullscreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.msFullscreenElement) {
+          closeVimeoPlayer();
+        }
+      });
+    });
+}
+
+// Close Vimeo player safely
+function closeVimeoPlayer() {
+  if (activeIframe) {
+    activeIframe.remove();
+    activeIframe = null;
+  }
+  if (closeButton) {
+    closeButton.remove();
+    closeButton = null;
+  }
+  if (document.exitFullscreen) document.exitFullscreen();
+}
+
+// Load Vimeo videos with blended fade-out + fade-in
+async function loadVimeoVideos() {
   try {
-    const response = await fetch(
-      `https://api.vimeo.com/users/${userId}/videos?page=${page}&per_page=${perPage}`,
-      { headers: { Authorization: `Bearer ${accessToken}` } }
-    );
+    fadeOutExistingThumbs();
 
-    if (!response.ok) {
-      throw new Error(`Vimeo API error ${response.status} ${response.statusText}`);
-    }
+    const response = await fetch(`https://api.vimeo.com/users/${userId}/videos`, {
+      headers: { 'Authorization': `Bearer ${accessTikon}` }
+    });
 
     const data = await response.json();
 
-    // Append video reels
-    data.data.forEach(video => {
-      const videoId = video.uri.split("/").pop();
-      const reel = document.createElement("div");
-      reel.className = "ratio ratio-9x16 mb-4";
+    data.data.forEach((video, index) => {
+      const videoId = video.uri.split('/').pop();
+      const thumbnailUrl = video.pictures.sizes[3].link;
 
-      reel.innerHTML = `
-        <iframe
-          src="https://player.vimeo.com/video/${videoId}?title=0&byline=0&portrait=0&autoplay=0&muted=0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          style="border:0;">
-        </iframe>
-      `;
+      const thumb = document.createElement('div');
+      thumb.classList.add('video-thumb');
+      thumb.innerHTML = `<img src="${thumbnailUrl}" alt="${video.name}">`;
 
-      container.appendChild(reel);
+      // Fade-in stagger
+      thumb.style.animation = `fadeInThumb 0.8s forwards`;
+      thumb.style.animationDelay = `${index * 0.1}s`;
+
+      thumb.addEventListener('click', () => {
+        openFullscreenVimeo(videoId);
+      });
+
+      gallery.appendChild(thumb);
     });
-
-    // Update paging info
-    if (typeof data.total === 'number') {
-      totalPages = Math.ceil(data.total / perPage);
-    } else if (data.paging && data.paging.last) {
-      try {
-        const lastPage = new URL(data.paging.last).searchParams.get('page');
-        totalPages = lastPage ? parseInt(lastPage, 10) : totalPages;
-      } catch (e) {
-        console.warn('Could not parse paging.last:', e);
-      }
-    } else if (data.paging && data.paging.next == null) {
-      totalPages = page;
-    }
-
-    // Ensure sentinel exists
-    let sentinel = document.getElementById('scroll-sentinel');
-    if (!sentinel) {
-      sentinel = document.createElement('div');
-      sentinel.id = 'scroll-sentinel';
-      sentinel.style.width = '100%';
-      sentinel.style.height = '1px';
-      sentinel.style.marginTop = '10px';
-      container.appendChild(sentinel);
-    } else {
-      container.appendChild(sentinel);
-    }
-
-    if (!observer) {
-      setupSentinelObserver();
-    }
-
-    console.log(`Page ${page} loaded. currentPage=${currentPage}, totalPages=${totalPages}`);
-  } catch (err) {
-    console.error('Error fetching videos:', err);
-    container.insertAdjacentHTML('beforeend', `<p class="text-danger">⚠️ Failed to load videos: ${err.message}</p>`);
-  } finally {
-    isLoading = false;
+  } catch (error) {
+    console.error("Error fetching videos:", error);
   }
 }
 
-function setupSentinelObserver() {
-  const sentinel = document.getElementById('scroll-sentinel');
-  const options = {
-    root: container,
-    rootMargin: '400px 0px',
-    threshold: 0.01
-  };
-
-  observer = new IntersectionObserver(async (entries) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting && !isLoading && currentPage < totalPages) {
-        currentPage++;
-        await loadVideos(currentPage);
-      }
-    }
-  }, options);
-
-  observer.observe(sentinel);
-}
-
-// initial load
-loadVideos(currentPage);
+// Run on page load
+loadVimeoVideos();
