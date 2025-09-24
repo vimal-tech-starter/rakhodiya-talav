@@ -4,68 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rakhodiya Talav</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/gallery.css">
-    <link rel="stylesheet" href="css/lightbox.css">
-    <link rel="stylesheet" href="css/scrollup.css">
+    <title>Image Grid Gallery</title>
+    <link rel="stylesheet" href="css/image/base.css">
+    <link rel="stylesheet" href="css/image/button.css">
+    <link rel="stylesheet" href="css/image/gallery.css">
+    <link rel="stylesheet" href="css/image/lightbox.css">
+    <link rel="stylesheet" href="css/image/scrollup.css">
 </head>
 
 <body>
+
+    <!-- Header -->
     <header>
-        <h2>
-            📸 Images Grid Gallery<br>
-            <a href="index.html">
-                <span style='font-size:50px;'>&#8592;</span>
-                Back to Home Page</a>
-        </h2>
+        <h1>📸 Recursive Image Gallery</h1>
+        <div class="controls">
+            <button id="darkModeToggle" class="dark-mode-toggle">🌙</button>
+            <button id="toggle-all" class="toggle-all">Collapse All</button>
+        </div>
     </header>
 
-    <div class="controls">
-        <button id="toggle-all">Collapse All</button>
-    </div>
-
-    <h2>Recursive Image Gallery</h2>
-    <div id="gallery"></div>
+    <!-- Gallery Container -->
+    <main id="gallery"></main>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <img id="lightbox-img">
-        <button class="control-btn close-btn">✖</button>
-        <button class="control-btn prev-btn">⟨</button>
-        <button class="control-btn next-btn">⟩</button>
+    <div id="lightbox" class="lightbox">
+        <img id="lightbox-img" src="" alt="Zoomed Image">
+        <button class="control-btn close-btn">×</button>
+        <button class="control-btn prev-btn">❮</button>
+        <button class="control-btn next-btn">❯</button>
     </div>
 
+    <div class="controls">
+        <button id="darkmode" class="dark-mode-toggle">🌙</button>
+        <button id="toggle-all-controls" class="toggle-all">Collapse All</button>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <h4>
-            ઐતિહાસિક પુનરુત્થાન: ૧૮૯૩માં લોકમાન્ય તિલક દ્વારા એકતા માટે<br>
-            જાહેર ક્ષેત્રમાં લોકપ્રિય બનેલ, ૧૦ દિવસીય ઉજવણીના ઊંડા સાંસ્કૃતિક<br>
-            મૂળ વૈદિક પરંપરાઓ અને ભક્તિ વિધિઓ સાથે જોડાયેલા છે.
-        </h4>
-        <hr>
-        <h3>
-            ગાયત્રી મંદિરની બાજુમાં, વલસાડ-396001, ગુજરાત-ભારત.
-        </h3>
-        <p>
-            <a href="https://vimaltech.dev/" target="_blank" alt="Card image">&copy; 2025 Vimal Patel | Java
-                Developer</a>
-        </p>
+        <h2 style="text-spacing-trim: normal;"><strong>End of the page</strong><b> "MEMORY-2025"</b></h2>
+        <h1>
+            <a href="index.html">
+                <span style='font-size:50px;'>&#8592;</span>
+                Back to Home Page
+            </a>
+        </h1>
     </footer>
 
-    <!-- Floating dark mode button -->
-    <button id="darkModeToggle">🌙</button>
-
-    <!-- Floating scroll-to-top button -->
-    <button id="scrollTopBtn">⬆️</button>
-
     <!-- JS -->
-    <script src="js/api.js"></script>
-    <script src="js/darkmode.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="js/lightbox.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/scrollup.js"></script>
+    <script src="js/image/api.js"></script>
+    <script src="js/image/darkmode.js"></script>
+    <script src="js/image/gallery.js"></script>
+    <script src="js/image/lightbox.js"></script>
+    <script src="js/image/main.js"></script>
+    <script src="js/image/scrollup.js"></script>
 </body>
 
 </html>

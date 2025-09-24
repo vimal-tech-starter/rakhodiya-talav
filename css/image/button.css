@@ -1,0 +1,50 @@
+.controls {
+    text-align: center;
+    margin: 10px 20px;
+}
+
+.controls button,
+#viewAll {
+    background: var(--button-color);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    /* slightly bigger */
+    border-radius: 8px;
+    /* smoother corners */
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.controls button:hover,
+#viewAll:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#viewAll {
+    background: #ff7043;
+}
+
+/* Optional: arrow icon rotation for toggle button */
+/* Collapse/Expand button with arrow */
+.toggle-all::after,
+#toggle-all::after {
+    content: " ⬇";
+    /* Down arrow by default */
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 0.3s;
+}
+
+.toggle-all.expanded::after,
+#toggle-all.expanded::after {
+    transform: rotate(180deg);
+    /* Rotates arrow when expanded */
+}
